@@ -1,0 +1,65 @@
+1.yes_no
+#!/bin/bash
+
+read ch
+
+if [[ "$ch" == "Y" || "$ch" == "y" ]]; then
+   echo "YES"
+else
+   echo "NO"
+fi
+
+2.calculate
+#!/bin/bash
+
+read expr
+awk "BEGIN { printf \"%.3f\n\", ($expr) }"
+
+3.Armstrong
+#!/bin/bash
+
+read num
+temp=$num
+sum=0
+digits=${#num}
+
+while [ $temp -gt 0 ]
+do
+    rem=$((temp % 10))
+    pow=1
+
+    for ((i=1; i<=digits; i++))
+    do
+        pow=$((pow * rem))
+    done
+
+    sum=$((sum + pow))
+    temp=$((temp / 10))
+done
+
+if [ $sum -eq $num ]; then
+    echo "Armstrong Number"
+else
+    echo "Not an Armstrong Number"
+fi
+
+4.fibonacci
+#!/bin/bash
+
+read n
+
+a=0
+b=1
+
+while [ $a -lt $n ]
+do
+    temp=$a
+    a=$b
+    b=$((temp + b))
+done
+
+if [ $a -eq $n ]; then
+    echo "Fibonacci Number"
+else
+    echo "Not a Fibonacci Number"
+fi
